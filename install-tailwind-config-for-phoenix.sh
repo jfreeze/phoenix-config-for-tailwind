@@ -1,3 +1,5 @@
+#!/bin/sh
+
 cd assets
 
 rm package.json
