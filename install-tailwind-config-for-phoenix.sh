@@ -25,7 +25,7 @@ wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/maste
 
 cd ../../..
 
-mix compile
+exec mix compile
 
 exec mix tailwind.gen.whitelist
 echo "running mix node.update"
