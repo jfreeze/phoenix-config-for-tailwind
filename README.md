@@ -43,3 +43,15 @@ Make the following change to `dev.exs`
     # ]
   ]
 ```
+
+# Updating Package.json 
+
+If you want to add the node packages explicitly instead of updating package.json, run the following:
+
+```
+  cd assets
+  npm install tailwindcss --save-dev
+  npm install style-loader --save-dev
+  npm install postcss-purgecss --save-dev
+  npm install postcss-loader --save-dev
+```
