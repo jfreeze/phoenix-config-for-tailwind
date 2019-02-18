@@ -1,4 +1,3 @@
-mix deps.get
 cd assets
 
 rm package.json
