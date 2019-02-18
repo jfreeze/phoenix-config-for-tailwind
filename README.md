@@ -61,5 +61,6 @@ If you want to add the node packages explicitly instead of updating `package.jso
 If you want to install these updates on a new project (with our without having dependencies installed) run this command from within your new project:
 
 ```
-wget -O - https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/install-tailwind-config-for-phoenix.sh | bash
+mix deps.get && wget -O - https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/install-tailwind-config-for-phoenix.sh | bash
+
 ```
