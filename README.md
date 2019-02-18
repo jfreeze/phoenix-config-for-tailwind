@@ -67,3 +67,5 @@ mix compile
 mix tailwind.gen.whitelist
 mix node.update
 ```
+
+Note: Having a utility like `exenv` installed may cause issues with running multiple `mix` commands. You may have to copy/paste each mix command.
