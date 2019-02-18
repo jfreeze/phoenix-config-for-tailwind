@@ -26,3 +26,5 @@ wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/maste
 wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/lib/mix/tasks/node_update_assets.ex
 
 cd ../../..
+
+mix do deps.get, compile, tailwind.gen.whitelist, node.update
