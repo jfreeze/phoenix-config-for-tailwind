@@ -58,8 +58,12 @@ If you want to add the node packages explicitly instead of updating `package.jso
 
 # CLI Install
 
-If you want to install these updates on a new project (with our without having dependencies install) run this command from within your new project:
+If you want to install these updates on a new project (with our without having dependencies installed) run this command from within your new project:
 
 ```
 wget -O - https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/install-tailwind-config-for-phoenix.sh | bash
+
+mix compile
+mix tailwind.gen.whitelist
+mix node.update
 ```
