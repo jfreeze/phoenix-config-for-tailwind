@@ -62,10 +62,4 @@ If you want to install these updates on a new project (with our without having d
 
 ```
 wget -O - https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/install-tailwind-config-for-phoenix.sh | bash
-
-mix compile
-mix tailwind.gen.whitelist
-mix node.update
 ```
-
-Note: Having a utility like `exenv` installed may cause issues with running multiple `mix` commands. You may have to copy/paste each mix command separately.
