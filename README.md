@@ -2,7 +2,8 @@
 
 
 # Suggested mix alias to add
-```  defp aliases do
+```  
+  defp aliases do
     [
       ...
       "css.update": ["tailwind.gen.whitelist", "node.update"],
