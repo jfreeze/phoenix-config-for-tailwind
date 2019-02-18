@@ -1,5 +1,21 @@
 # phoenix-config-for-tailwind
 
+Starter files for configuring Phoenix for use with Tailwind.js.
+
+You can start by copying the `assets` and `lib/mix/tasks` to your new Phoenix project.
+
+You can also add a mix alias and turn off webpack watchers.
+
+Once the files are copied, update your node packages,
+```
+  cd assets
+  npm install
+  npx tailwind init
+```
+
+# Updates During Development
+
+If you add custom css components, you will need to manually update them if you turn off watchers. To do this, run `mix css.udpate`.
 
 # Suggested mix alias to add
 ```  
