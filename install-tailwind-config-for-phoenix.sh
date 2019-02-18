@@ -27,4 +27,3 @@ cd ../../..
 
 mix tailwind.gen.whitelist
 mix node.update
-# mix css.update
