@@ -27,7 +27,7 @@ cd ../../..
 
 mix compile
 
-mix tailwind.gen.whitelist
+exec mix tailwind.gen.whitelist
 echo "running mix node.update"
 mix node.update
 echo "end running mix node.update"
