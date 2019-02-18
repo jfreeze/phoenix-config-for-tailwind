@@ -46,7 +46,7 @@ Make the following change to `dev.exs`
 
 # Updating Package.json 
 
-If you want to add the node packages explicitly instead of updating package.json, run the following:
+If you want to add the node packages explicitly instead of updating `package.json`, run the following:
 
 ```
   cd assets
