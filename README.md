@@ -22,7 +22,7 @@ If you add custom css components, you will need to manually update them if you t
   defp aliases do
     [
       ...
-      "css.update": ["tailwind.gen.whitelist", "node.update"],
+      "css.update": ["tailwind.gen.whitelist", "node.update", "phx.digest"],
       ...
     ]
   end
@@ -52,7 +52,7 @@ If you want to add the node packages explicitly instead of updating `package.jso
   cd assets
   npm install tailwindcss --save-dev
   npm install style-loader --save-dev
-  npm install postcss-purgecss --save-dev
+  npm install postcss-purgecss@1.0.0 --save-dev
   npm install postcss-loader --save-dev
 ```
 
@@ -64,3 +64,10 @@ If you want to install these updates on a new project (with our without having d
 mix deps.get && wget -O - https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/install-tailwind-config-for-phoenix.sh | bash
 
 ```
+
+Or, if you already have an exisiting Webpack setup, you can use
+
+```
+mix deps.get && wget -O - https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/install-tailwind-with-existing-config-for-phoenix.sh | bash
+```
+

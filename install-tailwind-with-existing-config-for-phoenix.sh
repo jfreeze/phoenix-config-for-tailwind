@@ -10,7 +10,7 @@ wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/maste
 
 npm install tailwindcss --save-dev
 npm install style-loader --save-dev
-npm install postcss-purgecss --save-dev
+npm install postcss-purgecss@1.0.0 --save-dev
 npm install postcss-loader --save-dev
 
 npx tailwind init
