@@ -1,6 +1,6 @@
 # phoenix-config-for-tailwind
 
-Starter files for configuring Phoenix for use with Tailwind.js.
+Starter files for configuring Phoenix for use with TailwindCSS.
 
 You can start by copying the `assets` and `lib/mix/tasks` to your new Phoenix project.
 
