@@ -67,6 +67,8 @@ mix deps.get && wget -O - https://raw.githubusercontent.com/jfreeze/phoenix-conf
 
 Or, if you already have an exisiting Webpack setup, you can use
 
+Warning: This script will overwrite `postcss.config.js`, `webpack.config.js`, and `app.css`.
+
 ```
 mix deps.get && wget -O - https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/install-tailwind-with-existing-config-for-phoenix.sh | bash
 ```

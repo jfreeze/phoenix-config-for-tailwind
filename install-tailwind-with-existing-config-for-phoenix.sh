@@ -2,10 +2,10 @@
 
 cd assets
 
-rm -i postcss.config.js
+rm -f postcss.config.js
 wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/assets/postcss.config.js
 
-rm -i webpack.config.js
+rm -f webpack.config.js
 wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/assets/webpack.config.js
 
 npm install tailwindcss --save-dev
@@ -16,7 +16,7 @@ npm install postcss-loader --save-dev
 npx tailwind init
 
 cd css
-rm -i app.css
+rm -f app.css
 wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/assets/css/app.css
 
 cd ../../lib
