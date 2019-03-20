@@ -27,4 +27,19 @@ wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/maste
 
 cd ../../..
 
-mix do deps.get, compile, tailwind.gen.whitelist, node.update
+echo ""
+echo "------"
+echo ""
+echo "Your project is now configured to use TailwindCSS."
+echo "You can now update your project by running the following"
+echo ""
+echo "    mix do deps.get, compile, tailwind.gen.whitelist, node.update, phx.digest"
+echo ""
+echo "You can also add the following line to the aliases function in the mix.exs file"
+echo ""
+echo '    "css.update": ["tailwind.gen.whitelist", "node.update", "phx.digest"],'
+echo ""
+echo "to update your project with"
+echo ""
+echo "    mix css.update"
+echo ""

@@ -10,8 +10,9 @@ wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/maste
 
 npm install tailwindcss --save-dev
 npm install style-loader --save-dev
-npm install postcss-purgecss@1.0.0 --save-dev
 npm install postcss-loader --save-dev
+npm install postcss-purgecss@1.0.0 postcss@6.0.23 postcss-selector-parser@3.1.1 purgecss@0.21.0 --save-dev
+# May need to add --save-exact to the above command if it fails in the future due to package changes"
 
 npx tailwind init
 
@@ -29,4 +30,20 @@ wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/maste
 
 cd ../../..
 
-mix do deps.get, compile, tailwind.gen.whitelist, node.update
+echo ""
+echo "------"
+echo ""
+echo "Your project is now configured to use TailwindCSS."
+echo "You can now update your project by running the following"
+echo ""
+echo "    mix do deps.get, compile, tailwind.gen.whitelist, node.update, phx.digest"
+echo ""
+echo "You can also add the following line to the aliases function in the mix.exs file"
+echo ""
+echo '    "css.update": ["tailwind.gen.whitelist", "node.update", "phx.digest"],'
+echo ""
+echo "to update your project with"
+echo ""
+echo "    mix css.update"
+echo ""
+
