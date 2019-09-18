@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# WARNING: This overwrites app.css
+
 cd assets
 
 rm -f postcss.config.js
@@ -11,8 +13,9 @@ wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/maste
 npm install tailwindcss --save-dev
 npm install style-loader --save-dev
 npm install postcss-loader --save-dev
-npm install postcss-purgecss@1.0.0 postcss@6.0.23 postcss-selector-parser@3.1.1 purgecss@0.21.0 --save-dev
-# May need to add --save-exact to the above command if it fails in the future due to package changes"
+npm install postcss-purgecss postcss postcss-selector-parser purgecss --save-dev
+# Backup, may need to add --save-exact if it fails in the future due to package changes
+# npm install postcss-purgecss@1.0.0 postcss@7.0.18 postcss-selector-parser@6.0.2 purgecss@1.4.0 --save-dev
 
 npx tailwind init
 
@@ -46,4 +49,3 @@ echo "to update your project with"
 echo ""
 echo "    mix css.update"
 echo ""
-

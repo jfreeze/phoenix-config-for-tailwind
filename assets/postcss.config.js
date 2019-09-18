@@ -18,7 +18,7 @@ class TailwindExtractor {
 
 
 var plugins =  [
-  tailwindcss('./tailwind.js'),
+  tailwindcss('./tailwind.config.js'),
 ]
 const purge = [
     purgecss({
