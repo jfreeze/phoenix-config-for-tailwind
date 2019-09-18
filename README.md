@@ -58,18 +58,22 @@ If you want to add the node packages explicitly instead of updating `package.jso
 
 # CLI Install
 
-If you want to install these updates on a new project (with our without having dependencies installed) run this command from within your new project:
+To install tailwindcss on a new Phoenix project with Webpack, run the script below.
 
-```
-mix deps.get && wget -O - https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/install-tailwind-config-for-phoenix.sh | bash
+This script will load the latest libraries from npm, so there is a chance that it may fail.
 
-```
+You can view a failsafe install command that is commented out in the script, which loads known good npm modules.
 
-Or, if you already have an exisiting Webpack setup, you can use
-
-Warning: This script will overwrite `postcss.config.js`, `webpack.config.js`, and `app.css`.
+WARNING: This script will overwrite `postcss.config.js`, `webpack.config.js`, and `app.css`.
 
 ```
 mix deps.get && wget -O - https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/install-tailwind-with-existing-config-for-phoenix.sh | bash
 ```
 
+
+The script below is for the older tailwindcss 0.7.4.
+
+```
+mix deps.get && wget -O - https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/install-tailwind-config-for-phoenix.sh | bash
+
+```
