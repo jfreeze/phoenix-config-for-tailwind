@@ -3,29 +3,31 @@ defmodule Mix.Tasks.Tailwind.Gen.Whitelist do
 
   @shortdoc "Generates CSS class whitelist from classes found in <app>_web/**/*.ex and <app>_web/**/*.leex files."
   def run(_args) do
-    IO.puts "...Generating whitelist"
+    IO.puts("...Generating assets/whitelist.js")
+
     web_dir()
-    |> view_dir()
     |> find_files()
-    |> Enum.map(&grep(&1, "class=\""))
-    |> Enum.filter(fn({_path, list}) -> list != [] end)
+    |> Enum.map(&grep(&1, ["class:\s", "#\s:class"]))
+    |> Enum.filter(fn {_path, list} -> list != [] end)
     |> Enum.map(&extract_classes(&1))
-    |> List.flatten
+    |> List.flatten()
     |> generate_whitelist
     |> write_whitelist
-    IO.puts "...Whitelist written"
+
+    IO.puts("... assets/whitelist.js written")
   end
 
   defp write_whitelist(body) do
-    {:ok, file} = File.open "assets/whitelist.js", [:write]
-    IO.binwrite file, body
-    File.close file
+    {:ok, file} = File.open("assets/whitelist.js", [:write])
+    IO.binwrite(file, body)
+    File.close(file)
   end
 
   defp generate_whitelist(classes) do
     head = "const whitelist ="
     tail = "module.exports = whitelist;"
     body = "['" <> Enum.join(classes, "', '") <> "']"
+
     [head, body, tail]
     |> Enum.join("\n")
   end
@@ -37,23 +39,29 @@ defmodule Mix.Tasks.Tailwind.Gen.Whitelist do
 
   # line is known to have matches
   defp extract_classes_from_line(line) do
-    Regex.run(~r/class="([^"].*?)"/, line)
-    |> List.last
-    |> String.split
+    do_regex(line)
+    |> List.last()
+    |> String.split()
+  end
+
+  defp do_regex(line) do
+    case Regex.run(~r/class\:\s"([^"].*?)"/, line) do
+      nil ->
+        Regex.run(~r/"([^"].*?)"/, line) # capture # :class
+      list -> list
+    end
   end
 
   defp web_dir(app \\ get_app()) do
     Path.join("lib", "#{app}_web")
   end
-  defp view_dir(web_dir) do
-    Path.join(web_dir, "views")
-  end
 
   defp get_app() do
-    Mix.Project.config |> Keyword.get(:app)
+    Mix.Project.config() |> Keyword.get(:app)
   end
+
   def get_env() do
-    case Mix.env do
+    case Mix.env() do
       :prod -> "production"
       _ -> "development"
     end
@@ -61,9 +69,10 @@ defmodule Mix.Tasks.Tailwind.Gen.Whitelist do
 
   def grep(path, str) do
     matches =
-    File.stream!(path)
-      |> Stream.filter(&(String.contains?(&1, str)))
-      |> Enum.to_list
+      File.stream!(path)
+      |> Stream.filter(&String.contains?(&1, str))
+      |> Enum.to_list()
+
     {path, matches}
   end
 
@@ -86,5 +95,4 @@ defmodule Mix.Tasks.Tailwind.Gen.Whitelist do
   defp expand({:error, _}, path) do
     [path]
   end
-
 end
