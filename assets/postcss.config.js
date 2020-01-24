@@ -11,45 +11,48 @@ const appWeb = files.filter((file) => file.endsWith("_web"))[0]
 const searchPath = '../lib/' + appWeb + '/**/*eex'
 
 class TailwindExtractor {
- static extract(content) {
-   return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
- }
+  static extract(content) {
+    return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
+  }
 }
 
 
-var plugins =  [
+var plugins = [
   tailwindcss('./tailwind.config.js'),
+  require('autoprefixer')({
+    'browsers': ['> 1%', 'last 2 versions']
+  })
 ]
 const purge = [
-    purgecss({
-        content: glob.sync(searchPath, { nodir: true }),
-        whitelist: whitelist,
-        extractors: [
-          {
-            extractor: TailwindExtractor,
-            // Specify the file extensions to include when scanning for
-            // class names.
-            extensions: ["eex", "leex"]
-          }
-        ]
-    }),
+  purgecss({
+    content: glob.sync(searchPath, { nodir: true }),
+    whitelist: whitelist,
+    extractors: [
+      {
+        extractor: TailwindExtractor,
+        // Specify the file extensions to include when scanning for
+        // class names.
+        extensions: ["eex", "leex"]
+      }
+    ]
+  }),
 ]
 
 if (
-      process.argv.includes("development") &&
-      process.argv.includes("--mode")
-   ) {
+  process.argv.includes("development") &&
+  process.argv.includes("--mode")
+) {
   console.log('[postcss] ...dev mode detected, not purging css')
 } else if (
-      process.argv.includes("production") &&
-      process.argv.includes("--mode")   
-  ) {
+  process.argv.includes("production") &&
+  process.argv.includes("--mode")
+) {
   console.log('[postcss] ...prod mode detected, purging css')
   plugins = plugins.concat(purge)
 } else {
-  console.log("[postcss] ...no mode detected", {process_argv: process.argv})
+  console.log("[postcss] ...no mode detected", { process_argv: process.argv })
 }
 
 module.exports = {
-    plugins: plugins
+  plugins: plugins
 }
