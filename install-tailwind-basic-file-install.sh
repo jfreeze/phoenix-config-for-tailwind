@@ -4,6 +4,9 @@
 
 cd assets
 
+rm -f package.json
+wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/assets/package.json
+
 rm -f postcss.config.js
 wget https://raw.githubusercontent.com/jfreeze/phoenix-config-for-tailwind/master/assets/postcss.config.js
 
