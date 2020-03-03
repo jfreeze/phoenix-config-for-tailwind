@@ -13,8 +13,8 @@ module.exports = (env, options) => ({
     ]
   },
   entry: {
-    './js/app.js': ['./js/app.js'].concat(glob.sync('./vendor/**/*.js'))
-  },
+      './js/app.js': glob.sync('./vendor/**/*.js').concat(['./js/app.js'])
+    },
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, '../priv/static/js')
@@ -29,18 +29,19 @@ module.exports = (env, options) => ({
         }
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         exclude: /node_modules/,
         use: [
-          { loader: 'style-loader', },
-          MiniCssExtractPlugin.loader, 'css-loader',
-          { loader: 'postcss-loader' },
-        ],
+          {loader: 'style-loader',},
+          {loader: MiniCssExtractPlugin.loader},
+          {loader: 'css-loader', options: {importLoaders: 1, url: false}},
+          {loader: 'postcss-loader'},
+        ]
       },
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: '../css/app.css' }), // path relative to output path above: priv/static/js
     new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
-  ],
+  ]
 });
