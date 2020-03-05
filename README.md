@@ -18,9 +18,11 @@ Once the files are copied, update your node packages,
 ```
 
 
-# Updates During Development
+# Deployment
 
-If you add custom css components, you will need to manually update them if you turn off watchers. To do this, run `mix css.udpate`.
+Since `purgecss` cannot pick up classes defined in Elixir code, such as `class: "bg-blue-200"`, these classes are added to the `whitelist.js` file via the `gen_whitelist.ex` task. I add the alias below and run the `MIX_ENV=prod mix css.update` to my deploy scripts to ensure that all used classes exist in production.
+
+If you have other complicated class generation (e.g., computed classes or stored in variables), you may want to add a whitelist.html.eex file and just add any computed class there.
 
 # Suggested mix alias to add
 ```  
@@ -33,8 +35,4 @@ If you add custom css components, you will need to manually update them if you t
   end
 ```
 
-# Watchers
-You won't need to run tailwind for every change in dev mode, so for speed reasons, you can limit watchers to your custom css files.
-
-You can make that change to `dev.exs`
 
